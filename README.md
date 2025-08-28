@@ -1,7 +1,5 @@
 # EyesMolProject
 
-A molecular visualization and analysis project.
-
 ## Installation
 ### Environments
 - Ubuntu 22.04
