@@ -49,15 +49,20 @@
    
 ## Prepare Dataset
 ### Pubchem 데이터 25만개
-- 수집 코드 추가 예정
-### ChEBI 데이터 25만개
-- 수집 코드 추가 예정
+- .
+### ChEBI 데이터 18만개
+- .
+### Pubchem Instruction QA dataset 290만
+- .
+### ChEBI Instruction QA dataset
 
-## Instruction QA tuning
+## Instruction QA tuning 코드
 - 내용 추가 예정
 
+## Instruction tuning 모델 inference 노트북
+- https://github.com/bbeomdev/EyesMolProject/blob/main/inference.ipynb
 
-## CoT tuning
+## CoT tuning 코드
 - 내용 추가 예정
 
 
