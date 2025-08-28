@@ -45,3 +45,12 @@
    git lfs clone https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct
    ```
 
+## Instruction QA tuning
+- 내용 추가 예정
+
+
+## CoT tuning
+- 내용 추가 예정
+
+
+
