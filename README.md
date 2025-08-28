@@ -1,7 +1,9 @@
 # EyesMolProject
-### 아이젠사이언스 기업과 모두의 연구소 아이펠 리서치 과정이 함께 진행한 프로젝트입니다.
+### 아이젠사이언스 기업과 모두의연구소 아이펠 리서치가 함께 진행한 프로젝트입니다.
 - 멘토 : 아이젠사이언스 박세정 수석연구원님
-- 팀원 : 김범모, 서지연
+- 팀원 : 13기 김범모, 서지연
+- 결과물 ( 논문 ) : 추가 예정
+- 모델 가중치 : 추가 예정
 
 ## Installation
 ### Environments
@@ -44,6 +46,12 @@
    ```bash
    git lfs clone https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct
    ```
+   
+## Prepare Dataset
+### Pubchem 데이터 25만개
+- 수집 코드 추가 예정
+### ChEBI 데이터 25만개
+- 수집 코드 추가 예정
 
 ## Instruction QA tuning
 - 내용 추가 예정
