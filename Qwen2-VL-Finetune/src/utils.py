@@ -46,7 +46,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
         lora_cfg_pretrained = AutoConfig.from_pretrained(model_path)
         if hasattr(lora_cfg_pretrained, 'quantization_config'):
             del lora_cfg_pretrained.quantization_config
-        processor = AutoProcessor.from_pretrained(model_base)
+        processor = AutoProcessor.from_pretrained(model_base, use_fast = True)
         print('Loading Qwen2-VL from base model...')
         if "Qwen2.5" in model_base:
             model = Qwen2_5_VLForConditionalGeneration.from_pretrained(model_base, low_cpu_mem_usage=True, config=lora_cfg_pretrained, **kwargs)
@@ -79,11 +79,11 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
             config = json.load(f)
 
         if "Qwen2_5" in config["architectures"][0]:
-            processor = AutoProcessor.from_pretrained(model_path)
+            processor = AutoProcessor.from_pretrained(model_path, use_fast = True)
             model = Qwen2_5_VLForConditionalGeneration.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
 
         else:
-            processor = AutoProcessor.from_pretrained(model_path)
+            processor = AutoProcessor.from_pretrained(model_path, use_fast = True)
             model = Qwen2VLForConditionalGeneration.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
 
     return processor, model
