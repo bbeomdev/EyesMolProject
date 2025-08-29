@@ -581,7 +581,8 @@ def qwen2_5_mixed_modality_forward(
 
                 img = image_embeds.to(inputs_embeds.device, dtype=inputs_embeds.dtype)
                 flat = inputs_embeds.view(-1, H)
-                flat.index_copy_(0, row_idx, img)
+                # flat.index_copy_(0, row_idx, img)
+                flat = flat.index_copy(0, row_idx, img)
                 inputs_embeds = flat.view(B, T, H)
 
         if pixel_values_videos is not None:
