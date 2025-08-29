@@ -1,0 +1,52 @@
+name: "🚀 기능 추가 또는 코드 수정"
+description: "새로운 기능을 제안하거나 기존 코드를 수정합니다."
+title: "[TYPE]: 이슈 제목을 입력해주세요 (예: [FEAT]: 로그인 기능 추가)"
+labels: ["enhancement"]
+assignees:
+  - ''
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: "📝 설명 (Description)"
+      description: "추가하려는 기능이나 수정이 필요한 코드에 대한 상세한 설명을 작성해주세요."
+      placeholder: "예: 현재 로그인 방식은 이메일만 지원하지만, 소셜 로그인 기능을 추가하여 사용자 편의성을 높이고자 합니다."
+    validations:
+      required: true
+
+  - type: textarea
+    id: work-details
+    attributes:
+      label: "💻 작업 내용 (Work Details)"
+      description: "이 이슈를 해결하기 위해 구체적으로 어떤 작업들이 진행되어야 하는지 목록으로 작성해주세요."
+      placeholder: |
+        - [ ] Google OAuth 2.0 클라이언트 ID 생성
+        - [ ] 로그인 페이지에 소셜 로그인 버튼 UI 추가
+        - [ ] OAuth 인증 콜백 처리 로직 구현
+        - [ ] 사용자 정보 DB에 연동 및 저장
+    validations:
+      required: true
+
+  - type: textarea
+    id: ref-links
+    attributes:
+      label: "🔗 참고 링크 (Reference Links)"
+      description: "관련된 문서, 이미지, 다른 이슈나 PR이 있다면 링크를 추가해주세요."
+      placeholder: |
+        - [Figma 디자인 링크](https://www.figma.com/...)
+        - [관련 기술 문서](https://developers.google.com/identity/protocols/oauth2)
+        - 관련 이슈: #123
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: "🏷️ 이슈 유형"
+      description: "이슈의 유형을 선택해주세요."
+      options:
+        - "기능 추가 (Feature)"
+        - "코드 수정 (Refactor)"
+        - "버그 수정 (Bug)"
+        - "문서 작업 (Docs)"
+    validations:
+      required: true
