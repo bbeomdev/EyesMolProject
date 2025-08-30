@@ -5,6 +5,8 @@
 - 결과물 ( 논문 ) : 추가 예정
 - 모델 가중치 : 추가 예정
 
+
+
 ## Installation
 ### Environments
 - Ubuntu 22.04
@@ -65,5 +67,13 @@
 ## CoT tuning 코드
 - 내용 추가 예정
 
-
-
+# Citation
+```
+@misc{Qwen2-VL-Finetuning,
+  author = {Yuwon Lee},
+  title = {Qwen2-VL-Finetune},
+  year = {2024},
+  publisher = {GitHub},
+  url = {https://github.com/2U1/Qwen2-VL-Finetune}
+}
+```
