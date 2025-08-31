@@ -149,6 +149,7 @@ class QwenSFTTrainer(Trainer):
             run_dir = self._get_output_dir(trial=trial)
             output_dir = os.path.join(run_dir, checkpoint_folder)
             self.save_model(output_dir, _internal_call=True)
+            os.makedirs(output_dir, exist_ok=True) # 체크포인트 
             non_lora_weights = get_peft_state_non_lora_maybe_zero_3(self.model.named_parameters(), require_grad_only=False)
             torch.save(non_lora_weights, os.path.join(output_dir, "non_lora_state_dict.bin"))
 
