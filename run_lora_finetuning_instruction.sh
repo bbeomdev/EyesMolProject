@@ -41,9 +41,8 @@ deepspeed src/train/train_sft.py \
     --gradient_accumulation_steps $GRAD_ACCUM_STEPS \
     --image_min_pixels $((256 * 28 * 28)) \
     --image_max_pixels $((512 * 28 * 28)) \
-    # --use_liger False \
-    ----use_liger True \
-    # --bits 4 \
+    --use_liger False \
+    --bits 4 \
     --lora_enable True \
     --vision_lora True \
     --use_dora False \
