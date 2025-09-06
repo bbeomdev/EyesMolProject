@@ -193,3 +193,15 @@ class QwenSFTTrainer(Trainer):
     #             print(f"Training parameter {name}")
     # 
     #     return super().training_step(model, inputs)
+
+    def prediction_step(self, model, inputs, prediction_loss_only, ignore_keys=None):
+        result = super().prediction_step(model, inputs, prediction_loss_only, ignore_keys)
+
+      # Fix evaluation loss extraction
+        if isinstance(result, tuple) and result[0] is None and "labels" in inputs:
+            with torch.no_grad():
+                outputs = model(**inputs)
+                if hasattr(outputs, 'loss') and outputs.loss is not None:
+                    result = (outputs.loss, result[1], result[2])
+
+        return result
