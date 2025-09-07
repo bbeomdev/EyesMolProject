@@ -1,17 +1,14 @@
 # EyesMolProject
-### 아이젠사이언스 기업과 모두의연구소 아이펠 리서치가 1달간 함께 진행한 프로젝트입니다.
-- **멘토** : 아이젠사이언스 **박세정** 수석연구원님
-- **팀원** : 13기 **김범모**, **서지연**
-  
----
-
-- **결과물 ( 논문 )** : 추가 예정
-- **회고록** : 추가 예정
+## 아이젠사이언스 기업과 모두의연구소 아이펠 리서치가 1달간 함께 진행한 프로젝트입니다.
+- ### **멘토** : 아이젠사이언스 **박세정 수석연구원**님
+- ### **팀원** : 13기 **김범모**, **서지연**
+- 결과물 ( 논문 ) : 추가 예정
+- 회고록 : 추가 예정
 
 
 ## Update
 - [2025/09/06] LoRA Stacking을 지원하는 코드를 추가하였습니다. ( 우리의 2step CoT train 과정을 참고해주세요. )
-- [2025/09/06] sft tuning 과정에서 eval, eval_loss 출력을 지원하도록 수정하였습니다.
+- [2025/09/06] sft tuning 과정에서 eval, eval_loss를 지원하도록 코드를 추가하였습니다.
 - [2025/08/28] Qwen2.5 VL, QLoRA, gradient_checkpointing을 같이 쓰면 발생하는 **오류를 해결**하였습니다.
      - 우리의 버그 해결 코드가 **공식 깃허브에 merge** 되었습니다. [#178](https://github.com/2U1/Qwen2-VL-Finetune/pull/178)
 
@@ -52,6 +49,9 @@
    git lfs clone https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct
    ```
    
+## Abstract
+- 
+
 ## Prepare Dataset
 - [EyesMolDataset](https://huggingface.co/datasets/bbeomdev/EyesMolDataset)
 
@@ -66,11 +66,16 @@
 ## Instruction QA tuning 코드
 - 내용 추가 예정
 
+## Train Model
+- [EyesMolModel](https://huggingface.co/bbeomdev/EyesMol)
+  
+
 ## Instruction tuning 모델 inference 노트북
 - https://github.com/bbeomdev/EyesMolProject/blob/main/inference.ipynb
 
 ## CoT tuning 코드
 - 내용 추가 예정
+
 
 # Citation
 ```
