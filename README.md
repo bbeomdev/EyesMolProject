@@ -8,16 +8,17 @@
 ## Update
 - [2025/09/06] LoRA Stacking을 지원하는 코드를 추가하였습니다. ( 우리의 2step CoT train 과정을 참고해주세요. )
 - [2025/09/06] sft tuning 과정에서 eval, eval_loss를 지원하도록 코드를 추가하였습니다.
-- [2025/08/28] Qwen2.5 VL, QLoRA, gradient_checkpointing을 같이 쓰면 발생하는 **오류를 해결**하였습니다.
-     - 우리의 버그 해결 코드가 **공식 깃허브에 merge** 되었습니다. [#178](https://github.com/2U1/Qwen2-VL-Finetune/pull/178)
+- [2025/08/28] Qwen2.5 VL, QLoRA, gradient_checkpointing을 같이 쓰면 발생하는 오류를 해결하였습니다.
+     - 우리의 버그 해결 코드가 공식 깃허브에 merge 되었습니다. [#178](https://github.com/2U1/Qwen2-VL-Finetune/pull/178)
 
-## Installation
+## Environments
 - 2U1 / [Qwen2-VL-Finetune](https://github.com/2U1/Qwen2-VL-Finetune) 레포지토리를 기반으로 제작되었습니다.
-
-### Environments
 - Ubuntu 22.04
 - Cuda version 12.4
 - Using uv and requirements.txt
+
+### Installation
+
 1. Install uv:
    ```bash
    pip install uv
@@ -52,22 +53,40 @@
 - 
 
 ## Prepare Dataset
-- [EyesMolDataset](https://huggingface.co/datasets/bbeomdev/EyesMolDataset)
+[EyesMolDataset](https://huggingface.co/datasets/bbeomdev/EyesMolDataset)
 
-### Pubchem 데이터 25만개
-- .
-### ChEBI 데이터 18만개
-- .
+### PubChem 데이터 250K + ChEBI 데이터 180K
+- 우리는 PubChem, ChEBI 홈페이지에서 데이터를 수집했습니다.
+- ( PubChem은 [MoleculeSTM](https://github.com/chao1224/MoleculeSTM)의 CID2SMILES.CSV 파일 id값을 참고하여 직접 수집했습니다. ChEBI는 [Ontology files](https://www.ebi.ac.uk/chebi/)의 id를 참고하였습니다.)
+- PubChem, ChEBI 데이터 제공자의 여러 라이센스로 인해 데이터를 직접 제공하기 어렵습니다. 대신 `instruction_data_id.parquet` 파일의 id를 참조하여 `utils/scrape_data.ipynb`로 수집할 수 있습니다.
+  
+### PubChem Gemini 2.5 pro 이미지 설명 데이터 180K
+- `instruction_data_id.parquet` 우리는 Gemini 2.5 pro를 사용하여 PubChem 이미지 180K에 대한 설명 데이터를 생성했습니다.
+
+### Instruction QA 데이터
+- 프로젝트 시간, 자원 제약으로 인해 PubChem 데이터만 사용했습니다. ( ChEBI 미포함 )
+- Instruction-following 능력을 유지하기 위해 [Pixmo-docs-charts 118k](https://huggingface.co/datasets/allenai/pixmo-docs) 데이터를 섞어서 사용했습니다.
+- 자세한 코드는 `utils/qa_generator.ipynb`를 참고해주세요.
+
+### CoT QA 데이터
+- 
+
+
 ### Pubchem Instruction QA dataset 290만
 - .
-### ChEBI Instruction QA dataset
-
-## Instruction QA tuning 코드
-- 내용 추가 예정
 
 ## Train Model
 - [EyesMolModel](https://huggingface.co/bbeomdev/EyesMol)
-  
+
+### Instruction QA tuning 코드
+- 필수 
+
+### CoT tuning
+- 필수
+
+
+## Inference
+- 
 
 ## Instruction tuning 모델 inference 노트북
 - https://github.com/bbeomdev/EyesMolProject/blob/main/inference.ipynb
@@ -84,5 +103,49 @@
   year = {2024},
   publisher = {GitHub},
   url = {https://github.com/2U1/Qwen2-VL-Finetune}
+}
+
+@article{molmo2024,
+  title={Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Multimodal Models},
+  author={Matt Deitke and Christopher Clark and Sangho Lee and Rohun Tripathi and Yue Yang and Jae Sung Park and Mohammadreza Salehi and Niklas Muennighoff and Kyle Lo and Luca Soldaini and Jiasen Lu and Taira Anderson and Erin Bransom and Kiana Ehsani and Huong Ngo and YenSung Chen and Ajay Patel and Mark Yatskar and Chris Callison-Burch and Andrew Head and Rose Hendrix and Favyen Bastani and Eli VanderBilt and Nathan Lambert and Yvonne Chou and Arnavi Chheda and Jenna Sparks and Sam Skjonsberg and Michael Schmitz and Aaron Sarnat and Byron Bischoff and Pete Walsh and Chris Newell and Piper Wolters and Tanmay Gupta and Kuo-Hao Zeng and Jon Borchardt and Dirk Groeneveld and Jen Dumas and Crystal Nam and Sophie Lebrecht and Caitlin Wittlif and Carissa Schoenick and Oscar Michel and Ranjay Krishna and Luca Weihs and Noah A. Smith and Hannaneh Hajishirzi and Ross Girshick and Ali Farhadi and Aniruddha Kembhavi},
+  journal={arXiv preprint arXiv:2409.17146},
+  year={2024}
+}
+
+@article{liu2023moleculestm,
+    title={Multi-modal molecule structure-text model for text-based retrieval and editing},
+    author={Liu, Shengchao and Nie, Weili and Wang, Chengpeng and Lu, Jiarui and Qiao, Zhuoran and Liu, Ling and Tang, Jian and Xiao, Chaowei and Anandkumar, Anima},
+    title={Multi-modal molecule structure--text model for text-based retrieval and editing},
+    journal={Nature Machine Intelligence},
+    year={2023},
+    month={Dec},
+    day={01},
+    volume={5},
+    number={12},
+    pages={1447-1457},
+    issn={2522-5839},
+    doi={10.1038/s42256-023-00759-6},
+    url={https://doi.org/10.1038/s42256-023-00759-6}
+}
+
+@article{Qwen2.5-VL,
+  title={Qwen2.5-VL Technical Report},
+  author={Bai, Shuai and Chen, Keqin and Liu, Xuejing and Wang, Jialin and Ge, Wenbin and Song, Sibo and Dang, Kai and Wang, Peng and Wang, Shijie and Tang, Jun and Zhong, Humen and Zhu, Yuanzhi and Yang, Mingkun and Li, Zhaohai and Wan, Jianqiang and Wang, Pengfei and Ding, Wei and Fu, Zheren and Xu, Yiheng and Ye, Jiabo and Zhang, Xi and Xie, Tianbao and Cheng, Zesen and Zhang, Hang and Yang, Zhibo and Xu, Haiyang and Lin, Junyang},
+  journal={arXiv preprint arXiv:2502.13923},
+  year={2025}
+}
+
+@article{Qwen2-VL,
+  title={Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution},
+  author={Wang, Peng and Bai, Shuai and Tan, Sinan and Wang, Shijie and Fan, Zhihao and Bai, Jinze and Chen, Keqin and Liu, Xuejing and Wang, Jialin and Ge, Wenbin and Fan, Yang and Dang, Kai and Du, Mengfei and Ren, Xuancheng and Men, Rui and Liu, Dayiheng and Zhou, Chang and Zhou, Jingren and Lin, Junyang},
+  journal={arXiv preprint arXiv:2409.12191},
+  year={2024}
+}
+
+@article{Qwen-VL,
+  title={Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond},
+  author={Bai, Jinze and Bai, Shuai and Yang, Shusheng and Wang, Shijie and Tan, Sinan and Wang, Peng and Lin, Junyang and Zhou, Chang and Zhou, Jingren},
+  journal={arXiv preprint arXiv:2308.12966},
+  year={2023}
 }
 ```
