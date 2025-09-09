@@ -8,8 +8,9 @@
 ## Update
 - [2025/09/06] LoRA Stacking을 지원하는 코드를 추가하였습니다. ( 우리의 2step CoT train 과정을 참고해주세요. )
 - [2025/09/06] sft tuning 과정에서 eval, eval_loss를 지원하도록 코드를 추가하였습니다.
+     - 현재 원본 레포지토리에 PR 예정입니다.
 - [2025/08/28] Qwen2.5 VL, QLoRA, gradient_checkpointing을 같이 쓰면 발생하는 오류를 해결하였습니다.
-     - 우리의 버그 해결 코드가 공식 깃허브에 merge 되었습니다. [#178](https://github.com/2U1/Qwen2-VL-Finetune/pull/178)
+     - 우리의 버그 해결 코드가 원본 레포지토리에 merge 되었습니다. [#178](https://github.com/2U1/Qwen2-VL-Finetune/pull/178)
 
 ## Environments
 - 2U1 / [Qwen2-VL-Finetune](https://github.com/2U1/Qwen2-VL-Finetune) 레포지토리를 기반으로 제작되었습니다.
