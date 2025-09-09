@@ -140,7 +140,7 @@ class TrainingArguments(HFTrainingArguments):
     lora_namespan_exclude: str = field(default=None, metadata={"help": "List of namespan to exclude for LoRA"})
     num_lora_modules: int = -1
     use_liger: bool = True
-
+    first_lora_path: Optional[str] = field(default=None, metadata={"help": "Path to first LoRA checkpoint for stacking"})
 @dataclass
 class DPOArguments(DPOConfigTRL):
     cache_dir: Optional[str] = field(default=None)
