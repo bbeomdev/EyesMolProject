@@ -1,5 +1,5 @@
 # EyesMolProject
-VLM 기반 Chain-of-Thought를 활용한 광학 화학 구조 인식. OCSR(Optical Chemical Structure Recognition)
+VLM 기반 Chain-of-Thought를 활용한 광학 화학 구조 인식 < OCSR(Optical Chemical Structure Recognition) >
 
 ### 아이젠사이언스 기업과 모두의연구소 아이펠 리서치가 1달간 함께 진행한 프로젝트입니다.
 - **멘토** : 아이젠사이언스 **박세정 수석연구원**님
