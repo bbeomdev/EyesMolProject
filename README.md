@@ -68,7 +68,7 @@ PubChem과 ChEBI에서 image-description 총 440K를 수집하고 Gemini2.5 pro�
 오류를 수정한 약 660K의 QA 데이터로 Instruction Tuning을 진행했고, 1 step CoT tuning과 2 step CoT tuning을 비교했습니다.
 결론적으로, Qwen 2.5 VL 3B 모델에서는 1 step CoT tuning이 2 step CoT tuning보다 성능이 높았습니다.
 이 연구는 VLM이 분자화학 이미지를 이해하고 지시를 따르는 능력을 학습하기 위해 필수적으로 고려해야될 점을 제공함과 동시에,
-인간의 추론 과정을 모방한 CoT tuning이 복잡한 과학 문제 해결에 중요한 역할을 할 수 있음을 보여줍니다.
+인간의 추론 과정을 모방한 CoT tuning이 OCSR 뿐만 아니라 복잡한 과학 문제 해결에 중요한 역할을 할 수 있음을 보여줍니다.
 ```
 
 ## Prepare Dataset
