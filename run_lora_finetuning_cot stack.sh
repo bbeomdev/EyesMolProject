@@ -18,7 +18,7 @@ export WANDB_LOG_MODEL="checkpoint"  # 체크포인트 자동 업로드
 export WANDB_WATCH="all"  # 그래디언트와 파라미터 추적
 
 # Wandb API 키 설정 (필요한 경우)
-export WANDB_API_KEY="1c74db38cee1c74d5fc5c18b07555355c9b4c94f"
+export WANDB_API_KEY=" "
 
 # 또는 wandb login을 통해 인증
 echo "Wandb 로그인 확인 중..."
