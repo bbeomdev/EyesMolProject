@@ -59,7 +59,16 @@ VLM 기반 Chain-of-Thought를 활용한 광학 화학 구조 인식 < OCSR(Opti
    ```
    
 ## Abstract
-- 
+```
+VLM을 활용한 2 step 파인튜닝 접근법을 제안합니다.
+1) 분자화학 QA데이터를 활용한 Instruction Tuning, 2) tuning된 모델을 활용하여 OCSR CoT tuning을 진행합니다.
+PubChem과 ChEBI에서 image-description 총 440K를 수집하고 Gemini2.5 pro를 사용하여 시각적 설명 데이터 180K를 생성했습니다.
+약 290K의 단일 유형의 QA 데이터로 첫번재 Instructio Tuning을 진행했고, 모델의 학습이 제대로 되지 않아 원인 분석 후 두번째 Instruction tuning을 하였습니다.
+첫번째 모델은 Instruction following 능력을 상실하고 베이스 모델보다 성능이 저하되는 심각한 문제를 발견했습니다.
+오류를 수정한 약 660K의 QA 데이터로 Instruction Tuning을 진행했고, 1 step CoT tuning과 2 step CoT tuning을 비교했습니다.
+결론적으로, Qwen 2.5 VL 3B 모델에서는 1 step CoT tuning이 2 step CoT tuning보다 성능이 높았습니다.
+이 연구는 VLM이 분자화학 이미지를 이해하고 지시를 따르는 능력을 학습하기 위해 필수적으로 고려해야될 점을 제공함과 동시에, 인간의 추론 과정을 모방한 CoT tuning이 복잡한 과학 문제 해결에 중요한 역할을 할 수 있음을 보여줍니다.
+```
 
 ## Prepare Dataset
 [EyesMolDataset](https://huggingface.co/datasets/bbeomdev/EyesMolDataset)
