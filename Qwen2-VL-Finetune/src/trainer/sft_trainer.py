@@ -195,13 +195,13 @@ class QwenSFTTrainer(Trainer):
     #     return super().training_step(model, inputs)
 
     def prediction_step(self, model, inputs, prediction_loss_only, ignore_keys=None):
-        result = super().prediction_step(model, inputs, prediction_loss_only, ignore_keys)
+        labels = inputs.get("labels") if "labels" in inputs else None
 
-      # Fix evaluation loss extraction
-        if isinstance(result, tuple) and result[0] is None and "labels" in inputs:
-            with torch.no_grad():
-                outputs = model(**inputs)
-                if hasattr(outputs, 'loss') and outputs.loss is not None:
-                    result = (outputs.loss, result[1], result[2])
+        with torch.no_grad():
+            outputs = model(**inputs)
+            loss = outputs.loss if hasattr(outputs, "loss") else None
+            logits = outputs.logits if hasattr(outputs, "logits") else None
 
-        return result
+        if prediction_loss_only:
+            return (loss, None, None)
+        return (loss, logits, labels)
