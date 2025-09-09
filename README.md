@@ -1,12 +1,14 @@
 # EyesMolProject
+VLM 기반 Chain-of-Thought를 활용한 광학 화학 구조 인식. OCSR(Optical Chemical Structure Recognition)
+
 ### 아이젠사이언스 기업과 모두의연구소 아이펠 리서치가 1달간 함께 진행한 프로젝트입니다.
 - **멘토** : 아이젠사이언스 **박세정 수석연구원**님
-- **팀원** : 13기 **김범모**, **서지연**
+- **팀원** : 아이펠 리서치 13기 TEAM EyesMol **김범모**, **서지연**
 - 결과물 ( 논문 ) : 추가 예정
 - 회고록 : 추가 예정
 
 ## Update
-- [2025/09/06] LoRA Stacking을 지원하는 코드를 추가하였습니다. ( 우리의 2step CoT train 과정을 참고해주세요. )
+- [2025/09/06] LoRA Stacking을 지원하는 코드를 추가하였습니다. ( 2step CoT tuning 과정을 참고해주세요. )
 - [2025/09/06] sft tuning 과정에서 eval, eval_loss를 지원하도록 코드를 추가하였습니다.
      - 현재 원본 레포지토리에 PR 예정입니다.
 - [2025/08/28] Qwen2.5 VL, QLoRA, gradient_checkpointing을 같이 쓰면 발생하는 오류를 해결하였습니다.
@@ -65,7 +67,7 @@
 ### PubChem 데이터 250K + ChEBI 데이터 180K
 - 우리는 PubChem, ChEBI 홈페이지에서 데이터를 수집했습니다.
 - ( PubChem은 [MoleculeSTM](https://github.com/chao1224/MoleculeSTM)의 CID2SMILES.CSV 파일 id값을 참고하여 직접 수집했습니다. ChEBI는 [Ontology files](https://www.ebi.ac.uk/chebi/)의 id를 참고하였습니다.)
-- PubChem, ChEBI 데이터 제공자의 여러 라이센스로 인해 데이터를 직접 제공하기 어렵습니다. 대신 `instruction_data_id.parquet` 파일의 id를 참조하여 `utils/scrape_data.ipynb`로 수집할 수 있습니다.
+- PubChem, ChEBI 데이터 제공자의 여러 라이센스로 인해 데이터를 직접 제공하기 어렵습니다. 대신 `instruction_data_id.parquet` 파일의 id를 참조하여 PuBchem, ChEBI의 API를 사용하여 수집하는 것을 권장드립니다.
   
 ### PubChem Gemini 2.5 pro 이미지 설명 데이터 180K
 - `instruction_data_id.parquet` 우리는 Gemini 2.5 pro를 사용하여 PubChem 이미지 180K에 대한 설명 데이터를 생성했습니다.
@@ -73,36 +75,30 @@
 ### Instruction QA 데이터
 - 프로젝트 시간, 자원 제약으로 인해 PubChem 데이터만 사용했습니다. ( ChEBI 미포함 )
 - Instruction-following 능력을 유지하기 위해 [Pixmo-docs-charts 118k](https://huggingface.co/datasets/allenai/pixmo-docs) 데이터를 섞어서 사용했습니다.
-- 자세한 코드는 `utils/qa_generator.ipynb`를 참고해주세요.
+- QA json 형태는 LLaVA 150K 형식을 따릅니다. 자세한 형태는 [LLaVA 15OK](https://huggingface.co/datasets/liuhaotian/LLaVA-Instruct-150K)를 참고해주세요.
+- `instruction_result_v2_train.json`는 저희가 훈련에 사용한 일부 데이터입니다.
 
 ### CoT QA 데이터
+- [GTR-CoT](https://arxiv.org/abs/2506.07553) 논문의 내용을 참고하였습니다. 공개된 데이터셋과 코드가 없어 완벽하게 일치하지 않으며 x,y 좌표의 경우 다를 수 있습니다.
 - MolScribe에서 제공하는 [USPTO 특허 데이터](https://huggingface.co/yujieq/MolScribe/blob/main/uspto_mol.zip)를 사용하여, 단일 분자 구조 이미지만 추출하여 사용했습니다.
-- USPTO 데이터셋에 포함된, 각 원자의 좌표(node coordinates)와 원자 간 결합 정보(edges)를 활용하여, Chain-of-Thought (CoT) 과정을 생성
+- USPTO 데이터셋에 포함된, 각 원자의 좌표(node coordinates)와 원자 간 결합 정보(edges)를 활용하여, Chain-of-Thought (CoT) 과정을 생성했습니다.
 - 자세한 코드는 `data_preprocess` 폴더를 참고해주세요
-
-
-### Pubchem Instruction QA dataset 290만
-- .
+- `cot_result_v2_train.json`는 저희가 훈련에 사용한 일부 데이터입니다.
 
 ## Train Model
 - [EyesMolModel](https://huggingface.co/bbeomdev/EyesMol)
 
 ### Instruction QA tuning 코드
-- 필수 
+- 추가예정
 
 ### CoT tuning
-- 필수
+- 추가예정
 
+### 2 step CoT tuning
+- 추가예정
 
 ## Inference
-- 
-
-## Instruction tuning 모델 inference 노트북
-- [https://github.com/bbeomdev/EyesMolProject/blob/main/inference.ipynb](https://github.com/bbeomdev/EyesMolProject/blob/main/inference/inference.ipynb)
-
-## CoT tuning 코드
-- 내용 추가 예정
-
+- inference 노트북 추가 예정
 
 # Citation
 ```
@@ -156,5 +152,14 @@
   author={Bai, Jinze and Bai, Shuai and Yang, Shusheng and Wang, Shijie and Tan, Sinan and Wang, Peng and Lin, Junyang and Zhou, Chang and Zhou, Jingren},
   journal={arXiv preprint arXiv:2308.12966},
   year={2023}
+}
+
+@article{Wang2025GTRCoT,
+  title = {GTR-CoT: Graph Traversal as Visual Chain of Thought for Molecular Structure Recognition},
+  author = {Jingchao Wang and Haote Yang and Jiang Wu and Yifan He and Xingjian Wei and Yinfan Wang and Chengjin Liu and Lingli Ge and Lijun Wu and Bin Wang and Dahua Lin and Conghui He},
+  journal = {arXiv preprint arXiv:2506.07553},
+  year = {2025},
+  note = {Version v2, submitted June 9, 2025; revised June 10, 2025},
+  url = {https://arxiv.org/abs/2506.07553}
 }
 ```
