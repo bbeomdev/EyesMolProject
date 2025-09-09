@@ -98,7 +98,7 @@
 - 
 
 ## Instruction tuning 모델 inference 노트북
-- https://github.com/bbeomdev/EyesMolProject/blob/main/inference.ipynb
+- [https://github.com/bbeomdev/EyesMolProject/blob/main/inference.ipynb](https://github.com/bbeomdev/EyesMolProject/blob/main/inference/inference.ipynb)
 
 ## CoT tuning 코드
 - 내용 추가 예정
