@@ -75,7 +75,7 @@
 - 자세한 코드는 `utils/qa_generator.ipynb`를 참고해주세요.
 
 ### CoT QA 데이터
-- MolScribe의 USPTO.zip 파일: MolScribe에서 제공하는 USPTO 특허 데이터를 사용하여, 단일 분자 구조 이미지만 추출하여 사용했습니다.
+- MolScribe에서 제공하는 [USPTO 특허 데이터](https://huggingface.co/yujieq/MolScribe/blob/main/uspto_mol.zip)를 사용하여, 단일 분자 구조 이미지만 추출하여 사용했습니다.
 - USPTO 데이터셋에 포함된, 각 원자의 좌표(node coordinates)와 원자 간 결합 정보(edges)를 활용하여, Chain-of-Thought (CoT) 과정을 생성
 
 
