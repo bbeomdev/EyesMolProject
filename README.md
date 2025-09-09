@@ -36,6 +36,12 @@
    ```bash
    uv pip install flash-attn==2.7.4.post1 --no-build-isolation
    ```
+4. Install wandb
+   ```bash
+   uv pip install wandb
+   wandb login <your_api_key>
+
+   ```
 5. Update system packages:
    ```bash
    apt update
