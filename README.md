@@ -95,22 +95,42 @@ PubChem과 ChEBI에서 image-description 총 440K를 수집하고 Gemini2.5 pro�
 - 자세한 코드는 `data_preprocess` 폴더를 참고해주세요
 - `cot_result_v2_train.json`는 저희가 훈련에 사용한 일부 데이터입니다.
 
+### images
+- 이미지 파일은 특정 폴더 내부에 들어있으면 됩니다.
+- ex)
+  ```
+  - images/
+       - image1.png
+       - image2.png
+  ```
+
 ## Train Model
 - [EyesMolModel](https://huggingface.co/bbeomdev/EyesMol)
 
 ### Instruction QA tuning 코드
-- 추가예정
+- `run_lora_finetuning_insturction.sh` 스크립트 참고
 
 ### CoT tuning
-- 추가예정
+- `run_lora_finetuning_cot` 스크립트 참고
 
 ### 2 step CoT tuning
-- 추가예정
+- `run_lora_finetuning_cot stack` 스크립트 참고
 
 ## Inference
-- inference 노트북 추가 예정
+- `inference/simple_inference_cot.ipynb` 참고
 
 # Citation
+```
+@misc{EyesMolProject2025,
+  title        = {EyesMolProject: VLM 기반 Chain-of-Thought를 활용한 광학 화학 구조 인식},
+  author       = {김범모 and 서지연 and 아이젠사이언스 박세정 수석연구원},
+  year         = {2025},
+  howpublished = {GitHub repository},
+  note         = {Apache-2.0 License},
+  url          = {https://github.com/bbeomdev/EyesMolProject}
+}
+```
+
 ```
 @misc{Qwen2-VL-Finetuning,
   author = {Yuwon Lee},
