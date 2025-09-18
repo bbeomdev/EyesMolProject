@@ -8,9 +8,9 @@ VLM 기반 Chain-of-Thought를 활용한 광학 화학 구조 인식 < OCSR(Opti
 - 회고록 : 추가 예정
 
 ## Update
-- [2025/09/06] LoRA Stacking을 지원하는 코드를 추가하였습니다. ( 2step CoT tuning 과정을 참고해주세요. )
+- [2025/09/06] LoRA Stacking을 지원하는 코드를 추가하였습니다.
 - [2025/09/06] sft tuning 과정에서 eval, eval_loss를 지원하도록 코드를 추가하였습니다.
-     - 현재 원본 레포지토리에 PR 예정입니다.
+     - 우리의 eval, eval_loss코드가 원본 레포지토리에 merge 되었습니다. [#183](https://github.com/2U1/Qwen2-VL-Finetune/pull/183)
 - [2025/08/28] Qwen2.5 VL, QLoRA, gradient_checkpointing을 같이 쓰면 발생하는 오류를 해결하였습니다.
      - 우리의 버그 해결 코드가 원본 레포지토리에 merge 되었습니다. [#178](https://github.com/2U1/Qwen2-VL-Finetune/pull/178)
 
@@ -118,6 +118,14 @@ PubChem과 ChEBI에서 image-description 총 440K를 수집하고 Gemini2.5 pro�
 
 ## Inference
 - `inference/simple_inference_cot.ipynb` 참고
+- 2 step CoT tuning의 경우 `merge_lora_weights.py` 대신 `merge_lora_stack_weights.py`를 사용하면 됩니다.
+- ```
+  !python /workspace/EyesMolProject/Qwen2-VL-Finetune/src/merge_lora_stack_weights.py \
+     --checkpoint-path {2step_CoT_checkpoint}
+     --first-lora-path {instruction_first_lora} \
+     --model-base {model_base} \
+     --save-model-path {save_path}
+  ```
 
 # Citation
 ```
