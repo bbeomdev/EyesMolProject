@@ -72,7 +72,7 @@ PubChem과 ChEBI에서 image-description 총 440K를 수집하고 Gemini2.5 pro�
 ```
 
 ## Prepare Dataset
-[EyesMolDataset](https://huggingface.co/datasets/bbeomdev/EyesMolDataset)
+- 여기서 다운 받을 수 있습니다. [EyesMolDataset](https://huggingface.co/datasets/bbeomdev/EyesMolDataset)
 
 ### PubChem 데이터 250K + ChEBI 데이터 180K
 - 우리는 PubChem, ChEBI 홈페이지에서 데이터를 수집했습니다.
@@ -105,7 +105,7 @@ PubChem과 ChEBI에서 image-description 총 440K를 수집하고 Gemini2.5 pro�
   ```
 
 ## Train Model
-- [EyesMolModel](https://huggingface.co/bbeomdev/EyesMol)
+- 여기서 다운 받을 수 있습니다. [EyesMolModel](https://huggingface.co/bbeomdev/EyesMol)
 
 ### Instruction QA tuning 코드
 - `run_lora_finetuning_insturction.sh` 스크립트 참고
