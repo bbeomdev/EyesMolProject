@@ -5,7 +5,7 @@ VLM 기반 Chain-of-Thought를 활용한 광학 화학 구조 인식 < OCSR(Opti
 - **멘토** : 아이젠사이언스 **박세정 수석연구원**님
 - **팀원** : 리서치 13기 팀 EyesMol **김범모**, **서지연**
   
-- 결과물 ( 발표영상, 발표자료 ) : 추가 예정
+- 결과물 ( 발표영상, 발표자료 ) : [발표영상](https://www.youtube.com/watch?v=gsOfYTx38S8)
 - 회고록 : 추가 예정
 
 ## :fire: Update
